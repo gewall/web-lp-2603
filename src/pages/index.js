@@ -2,7 +2,6 @@ import Head from "next/head";
 import NextImage from "next/image";
 import NextLink from "next/link";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import { BsBoxes, BsHouseDoor, BsServer } from "react-icons/bs";
 import Layout from "@/components/Layout";
 import {
@@ -31,7 +30,6 @@ import {
   SearchIcon,
   TimeIcon,
 } from "@chakra-ui/icons";
-import HeadPic from "@/assets/P1.jpg";
 
 import useSelector from "@/libs/hooks/useSelector";
 import { HeroHead } from "@/services/content-i18n";
@@ -122,16 +120,29 @@ export default function Home({ products }) {
               </Button>
             </VStack>
           </Center>
-          <Center flex={1} display={{ base: "none", md: "flex" }}>
-            <Image
-              as={NextImage}
-              src={HeadPic}
-              alt={"head picture"}
-              borderRadius={"full"}
-              objectFit={"cover"}
-              width={{ base: 150, md: 250 }}
-              height={{ base: 150, md: 250 }}
-            />
+          <Center
+            flex={1}
+            display={{ base: "none", md: "flex" }}
+            overflow={"hidden"}
+          >
+            <Box
+              position={"relative"}
+              w={{ base: 150, md: 250 }}
+              h={{ base: 150, md: 250 }}
+            >
+              <NextImage
+                src={
+                  "https://res.cloudinary.com/dlyc5g71i/image/upload/v1680419662/ponda/P1_muwp1e.jpg"
+                }
+                fill
+                alt={"head picture"}
+                style={{ borderRadius: "100%", objectFit: "cover" }}
+                // borderRadius={"full"}
+                // objectFit={"cover"}
+                // width={{ base: 150, md: 250 }}
+                // height={{ base: 150, md: 250 }}
+              />
+            </Box>
           </Center>
           <Center flex={1} justifyContent={"start"}>
             <VStack alignItems={"flex-start"} spacing={4}>
