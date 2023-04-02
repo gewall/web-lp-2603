@@ -15,7 +15,7 @@ import {
   AiOutlineInstagram,
   AiOutlineWhatsApp,
 } from "react-icons/ai";
-
+// rel="nofollow"
 const Footer = () => {
   return (
     <Box py={8} mt={8} bg={"orange.200"}>

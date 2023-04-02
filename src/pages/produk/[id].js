@@ -140,9 +140,11 @@ const ProdukDetail = ({ product }) => {
 };
 
 ProdukDetail.getLayout = function getLayout(page) {
-  // console.log(page.product);
   return (
-    <Layout title={"Produk"} description={"Produk teh ponda"}>
+    <Layout
+      title={page.props.product.name}
+      description={`produk ${page.props.product.name}`}
+    >
       {page}
     </Layout>
   );
