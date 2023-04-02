@@ -1,0 +1,30 @@
+[
+    {
+        "id":"1",
+        "name":"Gula Aren Cetak Silinder",
+        "harga":[{
+            "harga":"30000",
+            "unit":"KG ",
+            "type":"Lokal"
+        },{
+            "harga":"38000",
+            "unit":"KG",
+            "type":"Eksport"
+        }],
+        "url":"https://res.cloudinary.com/dlyc5g71i/image/upload/v1679981446/ponda/WhatsApp_Image_2021-10-04_at_12.14.06_i5hupv.jpg"
+    },
+    {
+        "id":"2",
+        "name":"Gula Aren Cetak Bulat",
+        "harga":[{
+            "harga":"30000",
+            "unit":"KG (Lokal)",
+            "type":"Lokal"
+        },{
+            "harga":"38000",
+            "unit":"KG",
+            "type":"Eksport"
+        }],
+        "url":"https://res.cloudinary.com/dlyc5g71i/image/upload/v1679981444/ponda/BI_Banten_UKM_dou4017_dgs8qn.jpg"
+    }
+]
