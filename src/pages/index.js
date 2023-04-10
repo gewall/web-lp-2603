@@ -107,6 +107,9 @@ export default function Home({ products }) {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Text>
               </HStack>
+              <Box>
+                <Text>B to B dan B to C Menerima ekspor</Text>
+              </Box>
               <Button
                 rightIcon={<SearchIcon />}
                 size={"sm"}

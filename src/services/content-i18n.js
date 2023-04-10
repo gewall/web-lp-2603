@@ -1,6 +1,6 @@
 export const nav = {
   indonesia: {
-    title: "Produk",
+    title: "PT KREASINDO LESMANA PUTRA",
     nav: "Navigasi",
     navList: [
       { text: "Beranda", url: "/" },
@@ -12,7 +12,7 @@ export const nav = {
       "https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg",
   },
   inggris: {
-    title: "Product",
+    title: "PT KREASINDO LESMANA PUTRA",
     nav: "Navigation",
     navList: [
       { text: "Home", url: "/" },

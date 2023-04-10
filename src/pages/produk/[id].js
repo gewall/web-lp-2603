@@ -3,6 +3,8 @@ import NextImage from "next/image";
 import Layout from "@/components/Layout";
 import { getProducts } from "@/libs/api/products";
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   ButtonGroup,
@@ -10,6 +12,8 @@ import {
   HStack,
   Image,
   Input,
+  ListItem,
+  OrderedList,
   Stack,
   useNumberInput,
   VStack,
@@ -47,7 +51,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const ProdukDetail = ({ product }) => {
-  const [variant, setVariant] = useState("Lokal");
+  const [variant, setVariant] = useState("Retail");
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
       step: 1,
@@ -93,36 +97,70 @@ const ProdukDetail = ({ product }) => {
             <Input {...getInputProps()} />
             <Button {...getIncrementButtonProps()}>+</Button>
           </HStack>
-          <HStack>
+          <VStack alignItems={"flex-start"}>
+            <Heading size={"sm"}>Spesifikasi</Heading>
+            <Box>
+              <OrderedList>
+                {product.spesifikasi.map((item, i) => (
+                  <Fragment key={i}>
+                    <ListItem>{item}</ListItem>
+                  </Fragment>
+                ))}
+              </OrderedList>
+            </Box>
+            <Heading size={"sm"}>
+              Harga :{" "}
+              <Heading as={"span"} size={"sm"} fontWeight={"light"}>
+                {Intl.NumberFormat("id-ID", {
+                  currency: "IDR",
+                  style: "currency",
+                }).format(parseInt(getHarga().harga)) + ` / ${getHarga().unit}`}
+              </Heading>
+            </Heading>
             <Heading size={"sm"}>
               Total :{" "}
               <Heading as={"span"} size={"sm"} fontWeight={"light"}>
                 {Intl.NumberFormat("id-ID", {
                   currency: "IDR",
                   style: "currency",
-                }).format(parseInt(getHarga().harga * getInputProps().value)) +
-                  ` / ${getHarga().unit}`}
+                }).format(parseInt(getHarga().harga * getInputProps().value))}
               </Heading>
             </Heading>
-          </HStack>
-          <Box>
-            <Button
-              as={"a"}
-              colorScheme={"orange"}
-              // color={"orange.300"}
-              target={"_blank"}
-              href={`https://wa.me/+6285794219715?text=Hai,%20Saya%20ingin%20memesan%20produk%20${
-                product.name
-              }%20sebanyak ${Math.ceil(
-                getInputProps().value
-              )} dengan harga ${Intl.NumberFormat("id-ID", {
-                currency: "IDR",
-                style: "currency",
-              }).format(parseInt(getHarga().harga * getInputProps().value))}`}
-            >
-              Pesan Sekarang
-            </Button>
-          </Box>
+          </VStack>
+          <VStack alignItems={"flex-start"}>
+            {variant === "Grosir" && getInputProps().value < 10 ? (
+              <Fragment>
+                <Alert status="warning">
+                  <AlertIcon />
+                  Anda harus membeli minimal 10 Kg.
+                </Alert>
+                <Button isDisabled colorScheme={"orange"}>
+                  Pesan Sekarang
+                </Button>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Button
+                  as={"a"}
+                  colorScheme={"orange"}
+                  // color={"orange.300"}
+                  target={"_blank"}
+                  href={`https://wa.me/+6285794219715?text=Hai,%20Saya%20ingin%20memesan%20produk%20${
+                    product.name
+                  }%20sebanyak ${Math.ceil(
+                    getInputProps().value
+                  )} kg dengan harga ${Intl.NumberFormat("id-ID", {
+                    currency: "IDR",
+                    style: "currency",
+                  }).format(
+                    parseInt(getHarga().harga * getInputProps().value)
+                  )}`}
+                >
+                  Pesan Sekarang
+                </Button>
+              </Fragment>
+            )}
+          </VStack>
         </VStack>
         <Box overflow={"hidden"}>
           <Box position={"relative"} w={"sm"} h={"sm"}>

@@ -41,19 +41,15 @@ const ProductCard = ({ item }) => {
             </Heading>
           </Box>
           <Box>
-            {item.harga.map((_item, i) => (
-              <Fragment key={i}>
-                <Text fontStyle={"italic"} fontSize={"sm"}>
-                  {Intl.NumberFormat("id-ID", {
-                    currency: "IDR",
-                    style: "currency",
-                  }).format(parseInt(_item.harga)) +
-                    " / " +
-                    _item.unit +
-                    ` (${_item.type})`}
-                </Text>
-              </Fragment>
-            ))}
+            <Text fontStyle={"italic"} fontSize={"sm"}>
+              {Intl.NumberFormat("id-ID", {
+                currency: "IDR",
+                style: "currency",
+              }).format(parseInt(item.harga[0].harga)) +
+                " / " +
+                item.harga[0].unit +
+                ` (${item.harga[0].type})`}
+            </Text>
           </Box>
           <VStack spacing={0} alignItems={"start"}>
             <Link as={NextLink} href={`/produk/${item.id}`}>
